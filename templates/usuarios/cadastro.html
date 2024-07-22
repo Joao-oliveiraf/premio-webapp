@@ -1,0 +1,19 @@
+<form action="{% url 'cadastro' %}" method="post">
+    {% csrf_token %}
+    <div>
+        {% for field in form %}
+        <div>
+            <label for="{{field.id_for_label}}">
+                {{field.label}}
+            </label>
+            {{field}}
+        </div>
+    </div>
+    {% for error in field.errors %}
+    <div>
+        {{error}}
+    </div>
+    {% endfor %}
+    {% endfor %}
+    <button type="submit">Cadastrar</button>
+</form>
