@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <div style="margin: auto; width: 500px;">
-        <form action="{% url 'novo_veiculo' %}" method="post" class="galeria_veiculos">
+        <form action="{% url 'novo_veiculo' %}" method="post" class="galeria_veiculos" enctype="multipart/form-data">
             {% csrf_token %}
             <div>
                 {% for field in form.visible_fields %}

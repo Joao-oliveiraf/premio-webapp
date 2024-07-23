@@ -8,7 +8,7 @@ class Veiculo(models.Model):
     cor = models.CharField(max_length=100, blank=False, null=False)
     combustivel = models.CharField(max_length=150, blank=False, null=False)
     descricao = models.TextField(null=True, blank=True)
-    foto = models.ImageField(upload_to='foto/%Y/%m/%d', blank=True)
+    foto = models.ImageField(upload_to='foto/%Y/%m/%d', blank=True, max_length=250)
     data = models.DateTimeField(default=timezone.now, blank=False)
     publicada = models.BooleanField(default=True)
 

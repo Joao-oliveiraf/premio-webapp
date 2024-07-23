@@ -7,12 +7,16 @@ def index(request):
     return render(request, 'shared/index.html')
 
 def novo_veiculo(request):
+    if not request.user.is_authenticated:
+        messages.error('Faça login')
+        return redirect('index')
+
     form = VeiculoForm
 
     if request.method == 'POST':
 
         form = VeiculoForm(request.POST, request.FILES)
-        
+
         if form.is_valid():
             form.save()
             messages.success(request, 'Novo cadastro de Veículo realizado')
