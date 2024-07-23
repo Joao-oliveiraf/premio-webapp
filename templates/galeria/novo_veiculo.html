@@ -1,0 +1,19 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+    <div style="margin: auto; width: 500px;">
+        <form action="{% url 'novo_veiculo' %}" method="post" class="galeria_veiculos">
+            {% csrf_token %}
+            <div>
+                {% for field in form.visible_fields %}
+                <div>
+                    <label style="color:#D9D9D9; margin-bottom: 5px;" for="{{field.id_for_label}}">{{field.label}}</label>
+                    {{field}}
+                </div>
+                {% endfor %}
+                <br>
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" style="margin: auto; width: 500px;">Salvar</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
