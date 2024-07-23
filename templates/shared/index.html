@@ -6,100 +6,35 @@
         <div class="cards_veiculos" !important>
             <h3>Apresentação dos veiculos</h3>
             <ul class="veiculos_lista">
-                
+                {% if cards %}
+                {% for fotografia in cards %}
                 <li class="veiculo">
                     <a href="#">
-                        <img class="foto" src="march.jpg" alt="" srcset="">
+                        <img class="foto" src="{{fotografia.foto.url}}" alt="Fotografia de Veículo">
                         <div class="card__info">
                             <p class="card__titulo">{{ fotografia.nome }}</p>
                         </a>
                             <div class="card__texto">
                             <span>
-                                <label for="">Preço:</label>
-                                dasdasdsadsadsa
+                                <label for="">Preço: R$</label>
+                                {% if fotografia.preco %}
+                                {{fotografia.preco}}
+                                {% else %}
+                                0,00
+                                {% endif %}
                             </span>
                             <span>
-                                <label for="">Preço:</label>
-                                asdasdasdasdasdas
+                                <label for="">Ano:</label>
+                                {{fotografia.ano}}
                             </span>
                             <span>
-                                <label for="">Preço:</label>
-                                asdasdsadas
+                                <label for="">Combustível:</label>
+                                {{fotografia.combustivel}}
                             </span>
-                            <span style="text-align: justify;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti alias eum minus quo, unde, ex pariatur, consectetur facere fugiat provident itaque natus. Soluta aliquam excepturi sunt porro, magnam vel voluptatum!
+                            <span style="text-align: justify;">{{fotografia.descricao}}
                             </span>
-                </li>
-                <li class="veiculo">
-                    <a href="#">
-                        <img class="foto" src="renault.jpg" alt="" srcset="">
-                        <div class="card__info">
-                        <p class="card__titulo">{{ fotografia.nome }}</p>
-                    </a>
-                        <div class="card__texto">
-                        <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti alias eum minus quo, unde, ex pariatur, consectetur facere fugiat provident itaque natus. Soluta aliquam excepturi sunt porro, magnam vel voluptatum!
-                        </span>
-                </li>
-                <li class="veiculo">
-                    <a href="#">
-                        <img class="foto" src="uno.jpg" alt="" srcset="">
-                        <div class="card__info">
-                        <p class="card__titulo">{{ fotografia.nome }}</p>
-                    </a>
-                        <div class="card__texto">
-                        <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quis id delectus dignissimos iusto aliquam voluptatibus veritatis? Iste aspernatur aperiam vel pariatur nostrum, commodi dicta eum deleniti perspiciatis necessitatibus cum!</span>
-                </li>
-                <li class="veiculo">
-                    <a href="#">
-                        <img class="foto" src="volks.jpg" alt="" srcset="">
-                        <div class="card__info">
-                        <p class="card__titulo">{{ fotografia.nome }}</p>
-                    </a>
-                        <div class="card__texto">
-                        <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quis id delectus dignissimos iusto aliquam voluptatibus veritatis? Iste aspernatur aperiam vel pariatur nostrum, commodi dicta eum deleniti perspiciatis necessitatibus cum!</span>
-                    
-                </li>
-                <li class="veiculo">
-                    <a href="#">
-                        <img class="foto" src="volks.jpg" alt="" srcset="">
-                        <div class="card__info">
-                        <p class="card__titulo">{{ fotografia.nome }}</p>
-                    </a>
-                        <div class="card__texto">
-                        <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quis id delectus dignissimos iusto aliquam voluptatibus veritatis? Iste aspernatur aperiam vel pariatur nostrum, commodi dicta eum deleniti perspiciatis necessitatibus cum!</span>
-                    
-                </li>
-                <li class="veiculo">
-                    <a href="#">
-                        <img class="foto" src="volks.jpg" alt="" srcset="">
-                        <div class="card__info">
-                        <p class="card__titulo">{{ fotografia.nome }}</p>
-                    </a>
-                        <div class="card__texto">
-                        <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quis id delectus dignissimos iusto aliquam voluptatibus veritatis? Iste aspernatur aperiam vel pariatur nostrum, commodi dicta eum deleniti perspiciatis necessitatibus cum!</span>
-                </li>
-                <li class="veiculo">
-                    <a href="#">
-                        <img class="foto" src="volks.jpg" alt="" srcset="">
-                        <div class="card__info">
-                        <p class="card__titulo">{{ fotografia.nome }}</p>
-                    </a>
-                        <div class="card__texto">
-                        <span style="text-align: justify;"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quis id delectus dignissimos iusto aliquam voluptatibus veritatis? Iste aspernatur aperiam vel pariatur nostrum, commodi dicta eum deleniti perspiciatis necessitatibus cum!</p>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quis id delectus dignissimos iusto aliquam voluptatibus veritatis? Iste aspernatur aperiam vel pariatur nostrum, commodi dicta eum deleniti perspiciatis necessitatibus cum!</p></span>
-                    
-                </li>
-                <li class="veiculo">
-                    <a href="#">
-                        <img class="foto" src="volks.jpg" alt="" srcset="">
-                        <div class="card__info">
-                        <p class="card__titulo">{{ fotografia.nome }}</p>
-                    </a>
-                        <div class="card__texto">
-                        <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quis id delectus dignissimos iusto aliquam voluptatibus veritatis? Iste aspernatur aperiam vel pariatur nostrum, commodi dicta eum deleniti perspiciatis necessitatibus cum!</span>
-                </li>
-                <!-- TESTANDO SLIDE SHOW-->                    
-
-                <!-- END TEST SLIDESHOW -->
+            {% endfor %}
+            {% endif %}
             </ul>
         </div>
     </section>
