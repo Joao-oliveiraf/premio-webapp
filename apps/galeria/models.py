@@ -11,6 +11,7 @@ class Veiculo(models.Model):
     foto = models.ImageField(upload_to='foto/%Y/%m/%d', blank=True, max_length=250)
     data = models.DateTimeField(default=timezone.now, blank=False)
     publicada = models.BooleanField(default=True)
+    preco = models.FloatField(max_length=20, blank=True, null=True)
 
     def __str__(self) -> str:
         return self.nome.title()

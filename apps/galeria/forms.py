@@ -22,6 +22,7 @@ class VeiculoForm(forms.ModelForm):
             'combustivel': forms.TextInput(attrs={'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'class': 'form-control'}),
             'foto': forms.FileInput(attrs={'class': 'form-control'}),
+            'preco': forms.NumberInput(attrs={'class':'form-control'}),
             'data': forms.DateInput(
                 format= '%d/%m/%Y',
                 attrs={
@@ -30,4 +31,3 @@ class VeiculoForm(forms.ModelForm):
                 }
             ),
         }
- 
