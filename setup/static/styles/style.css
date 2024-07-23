@@ -1,3 +1,144 @@
-body {
-    background-color: aquamarine;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    background-color: white
+}
+header{
+    background-color: darkred;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px;
+}
+form{
+    display: inline-block;
+}
+.nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: space-evenly;
+}
+
+.nav > ul > li > a:hover {
+    background-color: rgb(255, 255, 255);
+    text-decoration: underline;
+    
+}
+.nav > ul > li{
+    padding: 0px;
+    max-width: 150px;
+    color: rgb(63, 0, 0);
+    font-size: 1.5em;
+    justify-content: space-evenly;
+}
+.principal{
+    display: flex;
+    align-self: center;
+}
+.veiculos_lista{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-between;
+    list-style: none;
+}
+.veiculo {
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px #00000050;
+    color: #FFFFFF;
+    margin: 1.5rem;
+    position: relative;
+    width: 500px;
+}
+.cards_veiculos > h3{
+    text-align: center;
+    padding: 15px;
+}
+.cards_veiculos{
+    width: 100%;
+}
+.foto{
+    width: 500px;
+    border-radius: 10px 10px 0 0;
+    min-height: 300px;
+    max-height: 400px;
+}
+.card__info {
+    font-size: 1.2rem;
+    padding: 0 1.5rem 1rem 1.5rem;
+}
+
+.card__titulo {
+    font-weight: bold;
+    line-height: 1.2rem;
+    margin-top: 0.8em;
+}
+
+.card__texto {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.card__descricao {
+    font-size: 0.6em;
+    margin-top: 0.8em;
+}
+.galeria_veiculos{
+    display: flex;
+    width: 100%;
+}
+footer{
+    background-color: black;
+    width: 100%;
+    bottom: 0;
+    min-height: 100px;
+    box-sizing: border-box;
+    justify-content: space-between;
+
+    
+}
+.redes{
+    justify-content: center;
+    padding: 5px;
+    display: flex;
+}
+
+.redes > a{
+    padding: 5px;
+}
+.creditos{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* TESTANDO SLIDESHOW -----------------------------*/
