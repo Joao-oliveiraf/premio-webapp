@@ -1,5 +1,4 @@
 {% load static %}
-{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +10,12 @@
 </head>
 <body>
     <nav class="nav justify-content-center" style="background-color: white; border-bottom: 1px solid black">
-        <a href="#"><img src="{% static '/assets/imagens/logo_premioveiculos.jpg' %}" alt="Logo"></a>
+        <a href="#"><img src="{% static 'assets/imagens/logo_premioveiculos.jpg'%}" alt="Logo"></a>
         <ul class="nav justify-content-center">
-            <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Veiculos</a></li>
+            <li class="nav-item"><a href="{% url 'index' %}" class="nav-link active" style="color: darkred;">Home</a></li>
+            <li class="nav-item"><a href="{% url 'novo_veiculo' %}" class="nav-link active" style="color: darkred;">Localização</a></li>
             <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Contato</a></li>
+            <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Financiamento</a></li>
             <li class="nav-item"><a href="{% url 'login' %}" class="nav-link active" style="color: darkred;">Login</a></li>
         </ul>
         <form action="#" method="get" class="form-inline my-2 my-lg-0" >
@@ -24,120 +24,10 @@
         </form>
     </nav>
     <header>
+        {% include 'partials/_alertas.html' %}
         <h1>Nosso catalogo</h1>
     </header>
-    <main class="principal" style="border: 10px solid black;">
-        <section class="galeria_veiculos">
-            <div class="cards_veiculos" style="border: 15px solid red;">
-                <h3>Apresentação dos veiculos</h3>
-                <ul class="veiculos_lista">
-                    <li class="veiculo">
-                        <a href="#">
-                            <img class="foto" src="march.jpg" alt="" srcset="">
-                            <div class="card__info">
-                                <p class="card__titulo">{{ fotografia.nome }}</p>
-                                <div class="card__texto">
-                                <span>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam accusantium facere eos qui quis hic provident, officiis, aspernatur labore sed delectus asperiores? Dolorem ratione molestias tempore delectus provident quos molestiae.
-                                </span>
-                        </a>
-                    </li>
-                    <li class="veiculo">
-                        <a href="#">
-                            <img class="foto" src="renault.jpg" alt="" srcset="">
-                            <div class="card__info">
-                            <p class="card__titulo">{{ fotografia.nome }}</p>
-                            <div class="card__texto">
-                            <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti alias eum minus quo, unde, ex pariatur, consectetur facere fugiat provident itaque natus. Soluta aliquam excepturi sunt porro, magnam vel voluptatum!
-                            </span>
-                        </a>
-                    </li>
-                    <li class="veiculo">
-                        <a href="#">
-                            <img class="foto" src="uno.jpg" alt="" srcset="">
-                            <div class="card__info">
-                            <p class="card__titulo">{{ fotografia.nome }}</p>
-                            <div class="card__texto">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quis id delectus dignissimos iusto aliquam voluptatibus veritatis? Iste aspernatur aperiam vel pariatur nostrum, commodi dicta eum deleniti perspiciatis necessitatibus cum!</span>
-                        </a>
-                    </li>
-                    <li class="veiculo">
-                        <a href="#">
-                            <img class="foto" src="volks.jpg" alt="" srcset="">
-                            <div class="card__info">
-                            <p class="card__titulo">{{ fotografia.nome }}</p>
-                            <div class="card__texto">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quis id delectus dignissimos iusto aliquam voluptatibus veritatis? Iste aspernatur aperiam vel pariatur nostrum, commodi dicta eum deleniti perspiciatis necessitatibus cum!</span>
-                        </a>
-                    </li>
-                    <li class="veiculo">
-                        <a href="#">
-                            <img class="foto" src="volks.jpg" alt="" srcset="">
-                            <div class="card__info">
-                            <p class="card__titulo">{{ fotografia.nome }}</p>
-                            <div class="card__texto">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quis id delectus dignissimos iusto aliquam voluptatibus veritatis? Iste aspernatur aperiam vel pariatur nostrum, commodi dicta eum deleniti perspiciatis necessitatibus cum!</span>
-                        </a>
-                    </li>
-                    <li class="veiculo">
-                        <a href="#">
-                            <img class="foto" src="volks.jpg" alt="" srcset="">
-                            <div class="card__info">
-                            <p class="card__titulo">{{ fotografia.nome }}</p>
-                            <div class="card__texto">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quis id delectus dignissimos iusto aliquam voluptatibus veritatis? Iste aspernatur aperiam vel pariatur nostrum, commodi dicta eum deleniti perspiciatis necessitatibus cum!</span>
-                        </a>
-                    </li>
-                    <li class="veiculo">
-                        <a href="#">
-                            <img class="foto" src="volks.jpg" alt="" srcset="">
-                            <div class="card__info">
-                            <p class="card__titulo">{{ fotografia.nome }}</p>
-                            <div class="card__texto">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quis id delectus dignissimos iusto aliquam voluptatibus veritatis? Iste aspernatur aperiam vel pariatur nostrum, commodi dicta eum deleniti perspiciatis necessitatibus cum!</span>
-                        </a>
-                    </li>
-                    <li class="veiculo">
-                        <a href="#">
-                            <img class="foto" src="volks.jpg" alt="" srcset="">
-                            <div class="card__info">
-                            <p class="card__titulo">{{ fotografia.nome }}</p>
-                            <div class="card__texto">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quis id delectus dignissimos iusto aliquam voluptatibus veritatis? Iste aspernatur aperiam vel pariatur nostrum, commodi dicta eum deleniti perspiciatis necessitatibus cum!</span>
-                        </a>
-                    </li>
-                    <!-- TESTANDO SLIDE SHOW-->                    
-
-                    <!-- END TEST SLIDESHOW -->
-                </ul>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div class="creditos" style="font-size: medium; color: wheat;">Prêmio Veículos</div>
-        <div class="redes">
-            <a href="#">
-                <img src="{% static '/assets/icones/facebook.png' %}" alt="">
-            </a>
-            <a href="#">
-                <img src="{% static '/assets/icones/instagram.png' %}" alt="">
-            </a>
-            <a href="#">
-                <img src="{% static '/assets/icones/twitter.png' %}" alt="">
-            </a>
-        </div>
-        <div class="creditos" style="font-size: medium; color: wheat;">
-            Desenvolvido por João Pedro &copy;
-        </div>
-        <div class="redes">
-            <a href="#">
-                <img src="{% static '/assets/icones/instagram.png' %}" alt="">
-            </a>
-            <a href="#">
-                <img src="{% static '/assets/icones/github-wht.png' %}" style="color: wheat;" alt="">
-            </a>
-        </div>
-    </footer>
+    {% block content %}
+    {% endblock %}
 </body>
 </html>
-{% endblock %}

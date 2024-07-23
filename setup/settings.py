@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from django.contrib import messages
 
 load_dotenv()
 
@@ -134,5 +135,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#MESSAGES
+#MEDIA
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
+# MESSAGES
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger', # REFERS TO BOOTSTRAP ALERT CLASS
+    messages.SUCCESS: 'success',
+    messages.INFO: 'warning',
+}
 

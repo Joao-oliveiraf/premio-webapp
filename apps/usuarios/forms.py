@@ -53,11 +53,23 @@ class LoginForm(forms.Form):
         label='Nome de usuário',
         required=True,
         max_length=100,
-        widget=forms.TextInput()
+        widget=forms.TextInput(
+            attrs={
+                'class':'form-control',
+                'placeholder': 'Nome de usuário',
+                'style':'margin: 10px;'
+            }
+        )
     )
     senha = forms.CharField(
         label='Senha',
         required=True,
         max_length=70,
-        widget=forms.PasswordInput()
+        widget=forms.PasswordInput(
+            attrs={
+                'class':'form-control',
+                'placeholder': 'Senha',
+                'style':'margin: 10px;'
+            }
+        )
     )

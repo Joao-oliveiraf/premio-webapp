@@ -24,7 +24,8 @@ header, hgroup, menu, nav, section {
     display: block;
 }
 body {
-    background-color: white
+    background-color: white;
+    height: 100vh;
 }
 header{
     background-color: darkred;
@@ -49,17 +50,17 @@ form{
     justify-content: space-evenly;
 }
 
-.nav > ul > li > a:hover {
+.nav a:hover {
     background-color: rgb(255, 255, 255);
     text-decoration: underline;
-    
 }
-.nav > ul > li{
+.nav li{
     padding: 0px;
     max-width: 150px;
     color: rgb(63, 0, 0);
     font-size: 1.5em;
     justify-content: space-evenly;
+    margin: 15px 35px;
 }
 .principal{
     display: flex;
@@ -78,7 +79,7 @@ form{
     color: #FFFFFF;
     margin: 1.5rem;
     position: relative;
-    width: 500px;
+    width: 450px;
 }
 .cards_veiculos > h3{
     text-align: center;
@@ -86,9 +87,10 @@ form{
 }
 .cards_veiculos{
     width: 100%;
+    box-shadow: inset 0px 7px 10px 0px #0000007d;
 }
 .foto{
-    width: 500px;
+    width: 450px;
     border-radius: 10px 10px 0 0;
     min-height: 300px;
     max-height: 400px;
@@ -108,6 +110,8 @@ form{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    color: black;
+    flex-direction: column;
 }
 .card__descricao {
     font-size: 0.6em;
@@ -124,8 +128,7 @@ footer{
     min-height: 100px;
     box-sizing: border-box;
     justify-content: space-between;
-
-    
+    box-shadow: -6px -7px 10px #0000007d;
 }
 .redes{
     justify-content: center;
@@ -133,12 +136,15 @@ footer{
     display: flex;
 }
 
-.redes > a{
+.redes a{
     padding: 5px;
 }
 .creditos{
     display: flex;
     justify-content: space-evenly;
+}
+span, label {
+    color: black;
 }
 
 /* TESTANDO SLIDESHOW -----------------------------*/

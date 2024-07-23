@@ -1,19 +1,25 @@
-<form action="{% url 'login' %}" method="post">
-    {% csrf_token %}
-    <div>
-        {% for field in form %}
-        <div>
-            <label for="{{field.id_for_label}}">
-                {{field.label}}
-            </label>
-            {{field}}
-        </div>
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+    <div style="margin: auto; width: 500px;">
+        <form action="{% url 'login' %}" method="post" class="galeria_veiculos">
+            {% csrf_token %}
+            <div>
+                {% for field in form %}
+                <div>
+                    {{field}}
+                </div>
+                {% endfor %}
+                <button type="submit" style="margin: auto; width: 500px;">Login</button>
+            </div>
+            {% for error in field.errors %}
+            <div>
+                {{error}}
+            </div>
+            {% endfor %}
+        </form>
     </div>
-    {% for error in field.errors %}
-    <div>
-        {{error}}
-    </div>
-    {% endfor %}
-    {% endfor %}
-    <button type="submit">Login</button>
-</form>
+<footer style="background-color: black; position: fixed;">
+<p>Hello</p>
+</footer>
+{% endblock %}
