@@ -146,5 +146,8 @@ footer{
 span, label {
     color: black;
 }
+.form_container{
+    margin: 50px;
+}
 
 /* TESTANDO SLIDESHOW -----------------------------*/
