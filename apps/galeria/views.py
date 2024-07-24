@@ -1,8 +1,9 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 
 from apps.galeria.forms import VeiculoForm
-from apps.galeria.models import Veiculo
+from apps.galeria.models import Veiculo, ImagemVeiculo
 from django.contrib import messages
+from django.http import HttpResponse
 
 def index(request):
     fotos = Veiculo.objects.filter(publicada=True)
@@ -12,8 +13,7 @@ def index(request):
 
 def novo_veiculo(request):
     if not request.user.is_authenticated:
-        messages.error('Faça login')
-        return redirect('index')
+        return HttpResponse(status=401)
 
     form = VeiculoForm
 
@@ -27,3 +27,8 @@ def novo_veiculo(request):
             return redirect('index')
 
     return render(request, 'galeria/novo_veiculo.html', {'form':form})
+
+def imagem(request, foto_id):# foto_id
+    foto = get_object_or_404(Veiculo, pk=foto_id)
+    imagens = ImagemVeiculo.objects.filter(veiculo_id=foto_id)
+    return render(request, 'galeria/imagem.html', {'fotografia':foto, 'imagens':imagens})

@@ -9,7 +9,7 @@
                 {% if cards %}
                 {% for fotografia in cards %}
                 <li class="veiculo">
-                    <a href="#">
+                    <a href="{% url 'imagem' fotografia.id %}">
                         <img class="foto" src="{{fotografia.foto.url}}" alt="Fotografia de Veículo">
                         <div class="card__info">
                             <p class="card__titulo">{{ fotografia.nome }}</p>

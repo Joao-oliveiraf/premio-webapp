@@ -73,3 +73,10 @@ class LoginForm(forms.Form):
             }
         )
     )
+    def clean_nome_de_usuario(self):
+        nome = self.cleaned_data.get('nome_de_usuario')
+
+        if not User.objects.filter(username=nome).exists():
+            raise forms.ValidationError('Nome de usuário incorreto')
+        else:
+            return nome

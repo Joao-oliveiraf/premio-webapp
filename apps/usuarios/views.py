@@ -22,8 +22,6 @@ def login(request):
                 auth.login(request, usuario)
                 messages.success(request, f'Bem vindo novamente {nome.title()}')
                 return redirect('index')
-            elif not User.objects.filter(username=nome).exists():
-                messages.error(request, 'Nome de usuário invalido!')
             else:
                 messages.error('Senha incorreta!')
                 return redirect('login')
@@ -31,9 +29,8 @@ def login(request):
     return render(request, 'usuarios/login.html', {'form':form})
 
 def cadastro(request):
-    # if request.user.is_authenticated:
-    #     messages.error(request, 'Você já possui uma conta!')
-    #     return redirect('index')
+    if not request.user.is_superuser:
+        return redirect('index')
     
     form = CadastroForm
     
@@ -70,5 +67,6 @@ def logout(request):
         
     auth.logout(request)
     messages.success(request, 'Logout realizado com sucesso!')
+    return redirect('index')
     
 

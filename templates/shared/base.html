@@ -13,15 +13,26 @@
         <a href="#"><img src="{% static 'assets/imagens/logo_premioveiculos.jpg'%}" alt="Logo"></a>
         <ul class="nav justify-content-center">
             <li class="nav-item"><a href="{% url 'index' %}" class="nav-link active" style="color: darkred;">Home</a></li>
-            <li class="nav-item"><a href="{% url 'novo_veiculo' %}" class="nav-link active" style="color: darkred;">Localização</a></li>
+            <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Localização</a></li>
             <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Contato</a></li>
+            {% if request.user.is_authenticated %}
             <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Financiamento</a></li>
+            {% else %}
+            <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Condições</a></li>
+            {% endif %}
             <li class="nav-item"><a href="{% url 'login' %}" class="nav-link active" style="color: darkred;">Login</a></li>
         </ul>
         <form action="#" method="get" class="form-inline my-2 my-lg-0" >
             <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar">
             <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Pesquisar</button>
         </form>
+        {% if request.user.is_authenticated %}
+        <ul style="display: flex;">
+            <li style="list-style: none;"><a href="{% url 'novo_veiculo' %}">Novo Veículo</a></li>
+            <li style="list-style: none;"><a href="{% url 'logout' %}">Sair</a></li>
+        </ul>
+        {% else %}
+        {% endif %}
     </nav>
     <header>
         {% include 'partials/_alertas.html' %}
