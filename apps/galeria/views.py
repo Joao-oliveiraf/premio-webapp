@@ -38,17 +38,15 @@ def imagem(request, foto_id):# foto_id
 
 def add_imagem(request, foto_id):
     foto = Veiculo.objects.get(id=foto_id)
-    foto_extra = ImagemVeiculo.objects.create(veiculo_id=foto_id)
-    form = VeiculoForm(instance=foto)
-    form2 = ImagemVeiculoForm(instance=foto)
+    # foto_extra = ImagemVeiculo.objects.create(veiculo_id=foto_id)
+    form2 = ImagemVeiculoForm
 
     if request.method == 'POST':
-        form = VeiculoForm(request.POST, request.FILES, instance=foto)
-        form2 = ImagemVeiculoForm(request.POST, request.FILES,instance=foto_extra)
+        
+        form2 = ImagemVeiculoForm(request.POST, request.FILES)
 
-        if form.is_valid() and form2.is_valid():
-            form.save()
+        if form2.is_valid():
             form2.save()
             messages.success(request, 'Sucesso')
-            return redirect('index')
-    return render(request, 'galeria/add_imagem.html', {'fotografia':foto, 'form':form, 'form2':form2})
+            return render(request, 'galeria/add_imagem.html', {'fotografia':foto, 'form2':form2})
+    return render(request, 'galeria/add_imagem.html', {'fotografia':foto, 'form2':form2})

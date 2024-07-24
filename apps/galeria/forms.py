@@ -33,7 +33,7 @@ class VeiculoForm(forms.ModelForm):
         }
 
 class ImagemVeiculoForm(forms.ModelForm):
-    amount_of_pics = forms.NumberInput()
     class Meta:
         model = ImagemVeiculo
-        exclude = ['veiculo',]
+        fields = ['veiculo', 'imagem']
+        
