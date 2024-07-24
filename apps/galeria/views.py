@@ -1,6 +1,6 @@
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404,get_list_or_404
 
-from apps.galeria.forms import VeiculoForm
+from apps.galeria.forms import VeiculoForm,ImagemVeiculoForm
 from apps.galeria.models import Veiculo, ImagemVeiculo
 from django.contrib import messages
 from django.http import HttpResponse
@@ -31,4 +31,24 @@ def novo_veiculo(request):
 def imagem(request, foto_id):# foto_id
     foto = get_object_or_404(Veiculo, pk=foto_id)
     imagens = ImagemVeiculo.objects.filter(veiculo_id=foto_id)
+
     return render(request, 'galeria/imagem.html', {'fotografia':foto, 'imagens':imagens})
+    
+    
+
+def add_imagem(request, foto_id):
+    foto = Veiculo.objects.get(id=foto_id)
+    foto_extra = ImagemVeiculo.objects.create(veiculo_id=foto_id)
+    form = VeiculoForm(instance=foto)
+    form2 = ImagemVeiculoForm(instance=foto)
+
+    if request.method == 'POST':
+        form = VeiculoForm(request.POST, request.FILES, instance=foto)
+        form2 = ImagemVeiculoForm(request.POST, request.FILES,instance=foto_extra)
+
+        if form.is_valid() and form2.is_valid():
+            form.save()
+            form2.save()
+            messages.success(request, 'Sucesso')
+            return redirect('index')
+    return render(request, 'galeria/add_imagem.html', {'fotografia':foto, 'form':form, 'form2':form2})

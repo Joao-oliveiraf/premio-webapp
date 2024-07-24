@@ -1,5 +1,5 @@
 from django import forms
-from apps.galeria.models import Veiculo
+from apps.galeria.models import Veiculo, ImagemVeiculo
 
 class VeiculoForm(forms.ModelForm):
     class Meta:
@@ -31,3 +31,9 @@ class VeiculoForm(forms.ModelForm):
                 }
             ),
         }
+
+class ImagemVeiculoForm(forms.ModelForm):
+    amount_of_pics = forms.NumberInput()
+    class Meta:
+        model = ImagemVeiculo
+        exclude = ['veiculo',]
