@@ -1,0 +1,14 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+<img class="foto" src="{{fotografia.foto.url}}" alt="Fotografia de Veículo">
+<h1>Imagem.html</h1>
+{% if imagens %}
+{% for pics in imagens %}
+<img src="{{pics.imagem.url}}" alt="">
+{% endfor %}
+{% else %}
+<h1>Sem fotos adicionais</h1>
+{% endif %}
+{% endblock %}
+
