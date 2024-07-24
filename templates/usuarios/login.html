@@ -1,21 +1,21 @@
 {% extends 'shared/base.html' %}
 {% load static %}
 {% block content %}
-    <div style="margin: 20px auto; width: 500px; display: flex;">
+
         <form action="{% url 'login' %}" method="post" class="galeria_veiculos">
             {% csrf_token %}
-            <div style="width: 500px; margin: auto;">
+            <div class="row" style="margin: auto;">
                 {% for field in form %}
+                <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
                     {{field}}
-                {% endfor %}
-            <button class="btn btn-danger col-12" type="submit">Login</button>
-            </div>
+                </div>
             {% for error in field.errors %}
             <div class="alert alert-danger">
                 {{error}}
             </div>
             {% endfor %}
+            {% endfor %}
+            <button class="btn btn-danger col-3" type="submit" style="margin: auto;">Login</button>
         </form>
-    </div>
-{% include 'partials/_footer.html' %}
+    
 {% endblock %}
