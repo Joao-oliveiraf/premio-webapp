@@ -66,4 +66,9 @@ def buscar(request):
             messages.info(request, 'Nenhum resultado de sua busca')
             return redirect('index')
 
-
+def deletar_veiculo(request, foto_id):
+    if request.user.is_authenticated:
+        veiculo = Veiculo.objects.filter(id=foto_id)
+        veiculo.delete()
+        messages.info(request, 'Veiculo excluido com sucesso')
+        return redirect('index')
