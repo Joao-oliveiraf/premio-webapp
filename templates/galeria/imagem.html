@@ -1,10 +1,23 @@
 {% extends 'shared/base.html' %}
 {% load static %}
 {% block content %}
+<script>
+function delete_warning(){
+    var fake_deletar = document.getElementsByName('fake_deletar')
+    var real_deletar = document.getElementsByName('real_deletar')
+    var result = confirm('Deseja deletar ?')
+    if ((result)) {
+        real_deletar.style.display = 'block';
+        fake_deletar.style.display = 'none';
+    }else {
+        window.location.reload()
+    }
+}
+</script>
 <img class="foto" src="{{fotografia.foto.url}}" alt="Fotografia de Veículo">
 {% if request.user.is_authenticated %}
 <a href="{%url 'add_imagem' fotografia.id %}">Nova foto</a>
-<a href="{%url 'deletar_veiculo' fotografia.id %}">Deletar veiculo</a>
+<button><a href="{%url 'deletar_veiculo' fotografia.id %}">Deletar veiculo</a></button>
 {% else %}
 {% endif %}
 {% for pics in imagens %}
@@ -14,6 +27,5 @@
 <h1>Sem fotos adicionais</h1>
 {% endif %}
 {% endfor %}
-
 {% endblock %}
 
