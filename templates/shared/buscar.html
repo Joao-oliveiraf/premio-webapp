@@ -1,0 +1,45 @@
+{% extends 'shared/base.html'%}
+{% load static %}
+{% block content %}
+<main class="principal">
+    <section class="galeria_veiculos">
+        <div class="cards_veiculos" !important>
+            <h3>Apresentação dos veiculos</h3>
+            <ul class="veiculos_lista">
+                {% if cards %}
+                {% for fotografia in cards %}
+                <li class="veiculo">
+                    <a href="{% url 'imagem' fotografia.id %}">
+                        <img class="foto" src="{{fotografia.foto.url}}" alt="Fotografia de Veículo">
+                        <div class="card__info">
+                            <p class="card__titulo">{{ fotografia.nome }}</p>
+                        </a>
+                            <div class="card__texto">
+                            <span>
+                                <label for="">Preço: R$</label>
+                                {% if fotografia.preco %}
+                                {{fotografia.preco}}
+                                {% else %}
+                                0,00
+                                {% endif %}
+                            </span>
+                            <span>
+                                <label for="">Ano:</label>
+                                {{fotografia.ano}}
+                            </span>
+                            <span>
+                                <label for="">Combustível:</label>
+                                {{fotografia.combustivel}}
+                            </span>
+                            <span style="text-align: justify;">{{fotografia.descricao}}
+                            </span>
+            {% endfor %}
+            {% endif %}
+            </ul>
+        </div>
+    </section>
+</main>
+{% include 'partials/_footer.html' %}
+{% endblock %}
+
+
