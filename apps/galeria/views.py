@@ -4,6 +4,7 @@ from apps.galeria.forms import VeiculoForm,ImagemVeiculoForm
 from apps.galeria.models import Veiculo, ImagemVeiculo
 from django.contrib import messages
 from django.http import HttpResponse
+from django.db.models import Q
 
 def index(request):
     fotos = Veiculo.objects.filter(publicada=True)
@@ -50,3 +51,19 @@ def add_imagem(request, foto_id):
             messages.success(request, 'Sucesso')
             return render(request, 'galeria/add_imagem.html', {'fotografia':foto, 'form2':form2})
     return render(request, 'galeria/add_imagem.html', {'fotografia':foto, 'form2':form2})
+
+def buscar(request):
+
+    if 'buscar' in request.GET:
+        search = request.GET['buscar'].strip()
+        if Veiculo.objects.filter(Q(nome__icontains=search)| Q(descricao__icontains=search)):
+            search_result = Veiculo.objects.filter(Q(nome__icontains=search)| Q(descricao__icontains=search))
+            return render(request, 'shared/buscar.html', {'cards':search_result})
+        elif request.GET['buscar'] == ' ':
+            messages.info(request, 'Nenhum resultado de sua busca')
+            return redirect('index')
+        else:
+            messages.info(request, 'Nenhum resultado de sua busca')
+            return redirect('index')
+
+

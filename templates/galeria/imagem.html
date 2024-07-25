@@ -2,12 +2,13 @@
 {% load static %}
 {% block content %}
 <img class="foto" src="{{fotografia.foto.url}}" alt="Fotografia de Veículo">
-<h1>Imagem.html</h1>
+{% if request.user.is_authenticated %}
 <a href="{%url 'add_imagem' fotografia.id %}">Nova foto</a>
+{% else %}
+{% endif %}
 {% for pics in imagens %}
 {% if pics %}
 <img src="{{pics.imagem.url}}" alt="">
-
 {% else %}
 <h1>Sem fotos adicionais</h1>
 {% endif %}

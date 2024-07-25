@@ -22,8 +22,8 @@
             {% endif %}
             <li class="nav-item"><a href="{% url 'login' %}" class="nav-link active" style="color: darkred;">Login</a></li>
         </ul>
-        <form action="#" method="get" class="form-inline my-2 my-lg-0" >
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar">
+        <form action="{% url 'buscar' %}" method="get" class="form-inline my-2 my-lg-0" >
+            <input class="form-control mr-sm-2" type="search" name="buscar" placeholder="Pesquisar">
             <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Pesquisar</button>
         </form>
         {% if request.user.is_authenticated %}
