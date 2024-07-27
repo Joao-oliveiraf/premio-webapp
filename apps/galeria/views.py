@@ -31,9 +31,16 @@ def novo_veiculo(request):
 
 def imagem(request, foto_id):# foto_id
     foto = get_object_or_404(Veiculo, pk=foto_id)
-    imagens = ImagemVeiculo.objects.filter(veiculo_id=foto_id)
-
-    return render(request, 'galeria/imagem.html', {'fotografia':foto, 'imagens':imagens})
+    imagens_query_set = ImagemVeiculo.objects.filter(veiculo_id=foto_id)
+    imagens = enumerate(imagens_query_set, start=1)
+    tem_imagens = imagens_query_set.exists()
+    
+    
+    return render(request, 'galeria/imagem.html', {
+        'fotografia': foto,
+        'imagens': imagens,
+        'tem_imagens': tem_imagens
+    })
     
     
 
