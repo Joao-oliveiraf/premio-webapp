@@ -15,6 +15,12 @@ class Veiculo(models.Model):
 
     def __str__(self) -> str:
         return self.nome.title()
+    
+    def show_preco(self):
+        preco_string = f'{self.preco:,.2f}'.replace(',', '.')
+        
+        return preco_string
+    
 class ImagemVeiculo(models.Model):
     veiculo = models.ForeignKey(Veiculo, on_delete=models.CASCADE, related_name='imagens')
     imagem = models.ImageField(upload_to='attachments/%Y/%m', blank=True, max_length=255)
