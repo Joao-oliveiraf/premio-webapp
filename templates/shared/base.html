@@ -36,7 +36,7 @@
     </nav>
     <header>
         {% include 'partials/_alertas.html' %}
-        <h1>Nosso catalogo</h1>
+        <h1>{% block title %} {% endblock title %}</h1>
     </header>
     {% block content %}
     {% endblock %}
