@@ -9,13 +9,21 @@
         <img src="{{pics.imagem.url}}" alt="Foto">
     </div>
     {% endfor %}
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <span class="prev" ><a onclick="plusSlides(-1)">&#10094;</a></span>
+    <span class="next" ><a onclick="plusSlides(1)">&#10095;</a></span>
+    <div class="card__titulo">
+        {{fotografia.nome}}
+    </div>
+    <div class="card__titulo">
+        {{fotografia.ano}}
+    </div>
+    <div class="card__titulo">
+        {{fotografia.combustivel}}
+    </div>
+    
 </div>
 <br>
-<div style="text-align: center;">
-    <span class="dot" onclick="currentSlide(1)"></span>
-</div>
+
 {% else %}
 <p>Sem imagens</p>
 {% endif %}
