@@ -238,6 +238,25 @@ img{
     animation-name: fade;
     animation-duration: 1.5s;
 }
+#add, #remove{
+    margin-bottom: 250px;
+    display: flex;
+    margin: auto;
+    padding: 10px;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+}
+#add  a {
+    color: black;
+    text-decoration: none;
+}
+#remove  a {
+    color: black;
+    text-decoration: none;
+}
 
 @keyframes fade {
   from {opacity: .4}
