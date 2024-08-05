@@ -28,8 +28,8 @@
         </form>
         {% if request.user.is_authenticated %}
         <ul style="display: flex;">
-            <li style="list-style: none;"><a href="{% url 'novo_veiculo' %}">Novo Veículo</a></li>
-            <li style="list-style: none;"><a href="{% url 'logout' %}">Sair</a></li>
+            <li style="list-style: none;"><a href="{% url 'novo_veiculo' %}" style="color: darkred;">Novo Veículo</a></li>
+            <li style="list-style: none;"><a href="{% url 'logout' %}" style="color: darkred;">Sair</a></li>
         </ul>
         {% else %}
         {% endif %}

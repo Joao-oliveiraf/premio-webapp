@@ -53,6 +53,7 @@ form{
 .nav a:hover {
     background-color: rgb(255, 255, 255);
     text-decoration: underline;
+    text-decoration-color: darkred;
 }
 .nav li{
     padding: 0px;
@@ -60,7 +61,7 @@ form{
     color: rgb(63, 0, 0);
     font-size: 1.5em;
     justify-content: space-evenly;
-    margin: 15px 35px;
+    margin: auto 10px;
 }
 .principal{
     display: flex;
@@ -80,6 +81,10 @@ form{
     margin: 1.5rem;
     position: relative;
     width: 450px;
+}
+.veiculo:hover{
+    opacity: 0.8;
+    transition: ease-in-out 0.8s;
 }
 .cards_veiculos > h3{
     text-align: center;

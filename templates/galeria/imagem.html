@@ -63,9 +63,19 @@
 {% endif %}
 {% if request.user.is_authenticated %}
 
-<div class="btn btn-outline-success my-2 my-sm-0" id="add"><a href="{%url 'add_imagem' fotografia.id %}">Adicionar Fotos</a></div>
-<div class="btn btn-outline-danger my-2 my-sm-0" id="remove"><a href="{%url 'deletar_veiculo' fotografia.id %}" onclick="return confirm('Isso irá excluir todos os dados do veículo! Deseja prosseguir ?')">Deletar Veículo</a>
-</div>
+<section class="info_flex">
+    <div class="btn btn-outline-success my-2 my-sm-0" id="add">
+        <a href="{%url 'add_imagem' fotografia.id %}">
+            Adicionar Fotos
+        </a>
+    </div>
+    <br>
+    <div class="btn btn-outline-danger my-2 my-sm-0" id="remove">
+        <a href="{%url 'deletar_veiculo' fotografia.id %}" onclick="return confirm('Isso irá excluir todos os dados do veículo! Deseja prosseguir ?')">
+            Deletar Veículo
+        </a>
+    </div>
+</section>
 <br>
 
 {% endif %}
