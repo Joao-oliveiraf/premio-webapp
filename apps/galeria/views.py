@@ -79,3 +79,5 @@ def deletar_veiculo(request, foto_id):
         veiculo.delete() #Delete confirmation with javascript
         messages.info(request, 'Veiculo excluido com sucesso')
         return redirect('index')
+def contato(request):
+    return render(request, 'galeria/contato.html')

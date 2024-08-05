@@ -169,6 +169,10 @@ img{
     margin: 50px auto;
     display: none;
 }
+.mySlides img{
+    min-width: 350px;
+    max-height: 500px;
+}
 
 /* Next & previous buttons */
 .prev, .next {

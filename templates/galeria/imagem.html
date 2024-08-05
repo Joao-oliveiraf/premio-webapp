@@ -14,31 +14,57 @@
     {% endfor %}
     <span class="prev" ><a onclick="plusSlides(-1)">&#10094;</a></span>
     <span class="next" ><a onclick="plusSlides(1)">&#10095;</a></span>
-    <div class="card__titulo">
-        {{fotografia.nome}}
+    <div class="card__titulo" >
+        {{fotografia.nome}} /
+        {{fotografia.ano}} /
+        {{fotografia.combustivel}} 
     </div>
     <div class="card__titulo">
-        {{fotografia.ano}}
+        R$ {{fotografia.show_preco}}
     </div>
     <div class="card__titulo">
-        {{fotografia.combustivel}}
-    </div>
-    <div class="card__titulo">
-        R${{fotografia.show_preco}}
-    </div>
-    <div class="card__titulo">
+        {%if fotografia.descricao%}
         {{fotografia.descricao}}
+        <div class="card__titulo">
+            <a href="{%url 'contato' %}">Contate-nos</a> para saber mais!
+        </div>
+        {% else %}
+        <a href="{%url 'contato' %}">Contate-nos</a> para saber mais!
+        {% endif %}
     </div>
     <br>
 </div>
 
 {% else %}
-<p>Sem imagens</p>
+<div class="slideshow-container">
+    <div class="mySlides" >
+        <img src="{{fotografia.foto.url}}" alt="Foto">
+    </div>
+    <div class="card__titulo" >
+        {{fotografia.nome}} /
+        {{fotografia.ano}} /
+        {{fotografia.combustivel}}
+    </div>
+    <div class="card__titulo">
+        R$ {{fotografia.show_preco}}
+    </div>
+    <div class="card__titulo">
+        {%if fotografia.descricao%}
+        {{fotografia.descricao}}
+        <div class="card__titulo">
+            <a href="{%url 'contato' %}">Contate-nos</a> para saber mais!
+        </div>
+        {% else %}
+        <a href="{%url 'contato' %}">Contate-nos</a> para saber mais!
+        {% endif %}
+    </div>
+    <br>
+</div>
 {% endif %}
 {% if request.user.is_authenticated %}
 
-<div class="btn btn-outline-success my-2 my-sm-0" id="add"><a href="{%url 'add_imagem' fotografia.id %}">Click me</a></div>
-<div class="btn btn-outline-danger my-2 my-sm-0" id="remove"><a href="{%url 'deletar_veiculo' fotografia.id %}" onclick="return confirm('Deseja prosseguir ?')">Deletar me</a>
+<div class="btn btn-outline-success my-2 my-sm-0" id="add"><a href="{%url 'add_imagem' fotografia.id %}">Adicionar Fotos</a></div>
+<div class="btn btn-outline-danger my-2 my-sm-0" id="remove"><a href="{%url 'deletar_veiculo' fotografia.id %}" onclick="return confirm('Isso irá excluir todos os dados do veículo! Deseja prosseguir ?')">Deletar Veículo</a>
 </div>
 <br>
 
@@ -65,9 +91,6 @@ function showSlides(n) {
     if (n < 1) {slideIndex = slides.length}
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
     }
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
