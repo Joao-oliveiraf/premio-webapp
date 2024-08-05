@@ -16,7 +16,7 @@
             <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Localização</a></li>
             <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Contato</a></li>
             {% if request.user.is_authenticated %}
-            <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Financiamento</a></li>
+            <li class="nav-item"><a href="{% url 'financiamento' %}" class="nav-link active" style="color: darkred;">Financiamento</a></li>
             {% else %}
             <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Condições</a></li>
             {% endif %}
@@ -36,7 +36,7 @@
     </nav>
     <header>
         {% include 'partials/_alertas.html' %}
-        <h1>Nosso catalogo</h1>
+        <h1>{% block title %} {% endblock title %}</h1>
     </header>
     {% block content %}
     {% endblock %}

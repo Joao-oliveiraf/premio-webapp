@@ -76,6 +76,6 @@ def buscar(request):
 def deletar_veiculo(request, foto_id):
     if request.user.is_authenticated:
         veiculo = Veiculo.objects.filter(id=foto_id)
-        veiculo.delete()
+        veiculo.delete() #Delete confirmation with javascript
         messages.info(request, 'Veiculo excluido com sucesso')
         return redirect('index')

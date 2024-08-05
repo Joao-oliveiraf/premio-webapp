@@ -1,5 +1,8 @@
 {% extends 'shared/base.html' %}
 {% load static %}
+{% block title %}
+{{fotografia.nome}}
+{% endblock title %}
 {% block content %}
 <!-- LOGICA DE SLIDE SHOW -->
 {% if tem_imagens %}
