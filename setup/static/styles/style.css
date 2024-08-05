@@ -250,12 +250,18 @@ img{
     width: 150px;
 }
 #add  a {
-    color: black;
+    color: rgb(0, 0, 0);
     text-decoration: none;
 }
 #remove  a {
-    color: black;
+    color: rgb(0, 0, 0);
     text-decoration: none;
+}
+#add a:hover{
+    color: white;
+}
+#remove a:hover{
+    color: white;
 }
 
 @keyframes fade {

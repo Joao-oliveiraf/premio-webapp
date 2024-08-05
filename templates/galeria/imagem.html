@@ -29,8 +29,8 @@
 {% endif %}
 {% if request.user.is_authenticated %}
 
-    <div class="btn btn-outline-success my-2 my-sm-0" id="add"><a href="{%url 'add_imagem' fotografia.id %}">Click me</a></div>
-    <div class="btn btn-outline-danger my-2 my-sm-0" id="remove"><a href="{%url 'deletar_veiculo' fotografia.id %}" onclick="return confirm('Deseja prosseguir ?')">Deletar me</a></div>
+<div class="btn btn-outline-success my-2 my-sm-0" id="add"><a href="{%url 'add_imagem' fotografia.id %}">Click me</a></div>
+<div class="btn btn-outline-danger my-2 my-sm-0" id="remove"><a href="{%url 'deletar_veiculo' fotografia.id %}" onclick="return confirm('Deseja prosseguir ?')">Deletar me</a></div>
 
 {% endif %}
 <script>
