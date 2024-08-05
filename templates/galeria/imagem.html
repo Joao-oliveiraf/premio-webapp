@@ -20,9 +20,14 @@
     <div class="card__titulo">
         {{fotografia.combustivel}}
     </div>
-    
+    <div class="card__titulo">
+        R${{fotografia.show_preco}}
+    </div>
+    <div class="card__titulo">
+        {{fotografia.descricao}}
+    </div>
+    <br>
 </div>
-<br>
 
 {% else %}
 <p>Sem imagens</p>
@@ -30,7 +35,9 @@
 {% if request.user.is_authenticated %}
 
 <div class="btn btn-outline-success my-2 my-sm-0" id="add"><a href="{%url 'add_imagem' fotografia.id %}">Click me</a></div>
-<div class="btn btn-outline-danger my-2 my-sm-0" id="remove"><a href="{%url 'deletar_veiculo' fotografia.id %}" onclick="return confirm('Deseja prosseguir ?')">Deletar me</a></div>
+<div class="btn btn-outline-danger my-2 my-sm-0" id="remove"><a href="{%url 'deletar_veiculo' fotografia.id %}" onclick="return confirm('Deseja prosseguir ?')">Deletar me</a>
+</div>
+<br>
 
 {% endif %}
 <script>
@@ -63,6 +70,6 @@ function showSlides(n) {
     dots[slideIndex-1].className += " active";
 }
 </script>
-
+{%include 'partials/_footer.html' %}
 {% endblock %}
 
