@@ -14,7 +14,7 @@
         <ul class="nav justify-content-center">
             <li class="nav-item"><a href="{% url 'index' %}" class="nav-link active" style="color: darkred;">Home</a></li>
             <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Localização</a></li>
-            <li class="nav-item"><a href="#" class="nav-link active" style="color: darkred;">Contato</a></li>
+            <li class="nav-item"><a href="{% url 'contato' %}" class="nav-link active" style="color: darkred;">Contato</a></li>
             {% if request.user.is_authenticated %}
             <li class="nav-item"><a href="{% url 'financiamento' %}" class="nav-link active" style="color: darkred;">Financiamento</a></li>
             {% else %}
@@ -23,7 +23,7 @@
             <li class="nav-item"><a href="{% url 'login' %}" class="nav-link active" style="color: darkred;">Login</a></li>
         </ul>
         <form action="{% url 'buscar' %}" method="get" class="form-inline my-2 my-lg-0" >
-            <input class="form-control mr-sm-2" type="search" name="buscar" placeholder="Pesquisar">
+            <input class="form-control mr-sm-2" type="search" name="buscar" placeholder="Pesquisar Veículo">
             <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Pesquisar</button>
         </form>
         {% if request.user.is_authenticated %}

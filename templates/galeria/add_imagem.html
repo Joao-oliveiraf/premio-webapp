@@ -1,16 +1,21 @@
-<h1>Hello</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    {{form2.as_p}}
-    <button type="submit">Submit</button>
-</form>
-<img src="{{fotografia.foto.url}}" alt="">
-{% if messages %}
-{% for message in messages %}
-    <div class="alert alert-{{message.tags}}">
-        <p id="message">{{message}}</p>
-    </div>
-{% endfor %}
-<a href="{% url 'index' %}">Voltar</a>
-{% endif %}
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<div style="margin: auto; width: 500px;">
+    <form method="post" class="form-control" enctype="multipart/form-data" style="margin: auto;">
+        {% csrf_token %}
+        <div style="margin: 50px auto;">
+            {% for field in form2.visible_fields %}
+            <div>
+                <label for="field.id_for_label">{{field.label}}</label>
+            {{field}}
+            </div>
+            {% endfor %}
+            <br>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin: auto; width: -webkit-fill-available;">Salvar</button>
+        </div>
+    </form>
+    <div style="text-align: center;"><a href="{% url 'index' %}">Voltar</a></div>
+</div>
+{% endblock %}

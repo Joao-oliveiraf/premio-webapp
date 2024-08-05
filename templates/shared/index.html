@@ -1,12 +1,13 @@
 {% extends 'shared/base.html'%}
 {% load static %}
-{% block title %} Nosso Catalogo {% endblock title %}
+{% block title %} Desde 1987 fazendo bons negocios e agregando amigos {% endblock title %}
 
 {% block content %}
 <main class="principal">
     <section class="galeria_veiculos">
         <div class="cards_veiculos" !important>
             <h3>Apresentação dos veiculos</h3>
+            <h4 style="text-align: center;">Confira nosso estoque e conte com nossos parceiros para achar a melhor maneira de você adquirir seu veículo.</h4>
             <ul class="veiculos_lista">
                 {% if cards %}
                 {% for fotografia in cards %}
@@ -39,8 +40,16 @@
             {% endif %}
             </ul>
         </div>
+        
     </section>
 </main>
+<section class="info_grid">
+    <h3>HORÁRIO DE ATENDIMENTO:</h3>
+        <p>Estamos aberto em <strong>horário comercial</strong>, com atendimento restritivo em decorrência da pandemia e para a segurança de todos.</p>
+        <p>Nossos canais digitais estão disponíveis 24 horas por dia.</p>
+        <p>Fique a vontade para fazer consultas, simulações de financiamentos e tirar dúvidas.</p>
+    <br>
+</section>
 {% include 'partials/_footer.html' %}
 {% endblock %}
 

@@ -267,6 +267,14 @@ img{
 #remove a:hover{
     color: white;
 }
+.info_grid{
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    font-weight: light;
+}
 
 @keyframes fade {
   from {opacity: .4}
