@@ -1,5 +1,5 @@
-from django.shortcuts import render,redirect,get_object_or_404,get_list_or_404
-
+from django.shortcuts import render,redirect,get_object_or_404
+from django.contrib.auth.decorators import login_required
 from apps.galeria.forms import VeiculoForm,ImagemVeiculoForm
 from apps.galeria.models import Veiculo, ImagemVeiculo
 from django.contrib import messages
@@ -11,7 +11,7 @@ def index(request):
     
     return render(request, 'shared/index.html', {'cards':fotos})
 
-
+@login_required(login_url='/login')
 def novo_veiculo(request):
     if not request.user.is_authenticated:
         return HttpResponse(status=401)
@@ -43,7 +43,7 @@ def imagem(request, foto_id):# foto_id
     })
     
     
-
+@login_required(login_url='/login')
 def add_imagem(request, foto_id):
     foto = Veiculo.objects.get(id=foto_id)
     # foto_extra = ImagemVeiculo.objects.create(veiculo_id=foto_id)
@@ -72,7 +72,7 @@ def buscar(request):
         else:
             messages.info(request, 'Nenhum resultado de sua busca')
             return redirect('index')
-
+@login_required(login_url='/login')
 def deletar_veiculo(request, foto_id):
     if request.user.is_authenticated:
         veiculo = Veiculo.objects.filter(id=foto_id)
