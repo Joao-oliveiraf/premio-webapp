@@ -4,5 +4,11 @@
 Financiamento
 {% endblock title %}
 {% block content %}
-<h1>Financiamento</h1>
+<form action="" method="post" class="wizard_forms">
+    <h3>Detalhes do veículo</h3>
+    {% csrf_token %}
+    {{form.as_div}}
+    <br>
+    <button type="submit" class="btn btn-danger">Próximo</button>
+</form>
 {% endblock %}

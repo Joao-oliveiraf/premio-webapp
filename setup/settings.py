@@ -45,7 +45,8 @@ INSTALLED_APPS = [
 
     'apps.galeria.apps.GaleriaConfig',
     'apps.usuarios.apps.UsuariosConfig',
-    'apps.financiamento.apps.FinanciamentoConfig'
+    'apps.financiamento.apps.FinanciamentoConfig',
+    'formtools'
 ]
 
 MIDDLEWARE = [
@@ -120,7 +121,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-USE_THOUSAND_SEPARATOR = True
+USE_THOUSAND_SEPARATOR = False
 
 
 # Static files (CSS, JavaScript, Images)

@@ -36,6 +36,22 @@ header{
 form{
     display: inline-block;
 }
+.wizard_forms{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: stretch;
+}
+.wizard_forms_row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: stretch;
+}
 .nav {
     display: -webkit-box;
     display: -ms-flexbox;
