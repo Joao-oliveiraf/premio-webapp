@@ -5,11 +5,17 @@ Financiamento
 {% endblock title %}
 {% block content %}
 <form action="" method="post" class="wizard_forms">
-    <h3>Detalhes do veículo</h3>
-    <p>{{wizard.steps.step1|add:1 }}</p>
     {% csrf_token %}
+    
+    {% if wizard.steps.current == '0' %}
+    <h4>Detalhes do veiculo</h4>
+    {% else %}
+    <h4>Dados do cliente</h4>
+    {% endif %}
+
     {{ wizard.management_form }}
     {{form.as_div}}
+
     <br>
     <button type="submit" class="btn btn-danger">Próximo</button>
 </form>

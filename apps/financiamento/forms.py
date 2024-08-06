@@ -1,12 +1,13 @@
 from django import forms
 from django.utils import timezone
+from localflavor.br.forms import BRCPFField, BRCNPJField
 
 class StepOneFinanciamento(forms.Form):
     choices_pessoa_fisica_juridica = [
         ('cpf', 'Pessoa Física'),
         ('cnpj', 'Pessoa Jurídica')
     ]
-    ano_atual = int(str(timezone.now())[0:4])
+
     tipo_pessoa = forms.ChoiceField(
         choices=choices_pessoa_fisica_juridica,
         label='',
@@ -15,6 +16,7 @@ class StepOneFinanciamento(forms.Form):
             }
         )
     )
+    ano_atual = int(str(timezone.now())[0:4])
     marca = forms.CharField(
         max_length=100,
         required=True,
@@ -118,19 +120,52 @@ class StepOneFinanciamento(forms.Form):
         )
     )
 class StepTwoFinanciamento(forms.Form):
-    valor_entrada = forms.FloatField(
-        max_value=None,
-        min_value=None,
-        required=True,
-        label='Valor do veículo',
+    CHOICES = [
+        ('cpf', 'CPF'),
+        ('cnpj', 'CNPJ'),
+    ]
+
+    tipo = forms.ChoiceField(
+        choices=CHOICES,
+        widget=forms.RadioSelect,
+        label='Escolha o tipo de documento'
+    )
+    cpf = BRCPFField(
+        max_length=16,
+        label='CPF/CNPJ',
+        required=False,
         widget=forms.TextInput(
             attrs={
-                'class': 'form-control',
-                'placeholder': 'Valor do veículo',
-                'type':'number',
-                'step': '0.00'
+                'placeholder':'000.000.000-00',
+                'class':'form-control'
             }
         )
     )
+    cnpj = BRCNPJField(
+        label='CNPJ',
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': '00.000.000/0000-00',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        tipo = cleaned_data.get('tipo_pessoa')
+        cpf = cleaned_data.get('cpf')
+        cnpj = cleaned_data.get('cnpj')
+
+        if tipo == 'cpf' and not cpf:
+            self.add_error('cpf','Insira um valido')
+        elif tipo == 'cnpj' and not cnpj:
+            self.add_error('cnpj','Insira um valido')
+        return cleaned_data
+
+
+
+    
 class StepThreeFinanciamento(forms.Form):
     pass
