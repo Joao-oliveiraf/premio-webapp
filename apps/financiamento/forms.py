@@ -118,6 +118,19 @@ class StepOneFinanciamento(forms.Form):
         )
     )
 class StepTwoFinanciamento(forms.Form):
-    pass
+    valor_entrada = forms.FloatField(
+        max_value=None,
+        min_value=None,
+        required=True,
+        label='Valor do veículo',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Valor do veículo',
+                'type':'number',
+                'step': '0.00'
+            }
+        )
+    )
 class StepThreeFinanciamento(forms.Form):
     pass

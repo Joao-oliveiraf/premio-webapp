@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import financiamento
+from .views import financiamento, WizardFinanciamentoForm
 
 urlpatterns = [
-    path('financiamento', financiamento, name='financiamento')
+    path('financiamento', WizardFinanciamentoForm.as_view() , name='financiamento')
 ]
