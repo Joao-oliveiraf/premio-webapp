@@ -1,0 +1,16 @@
+{% extends 'shared/base.html'%}
+{% load static %}
+{% block title %}
+Financiamento
+{% endblock title %}
+{% block content %}
+<form action="" method="post" class="wizard_forms">
+    <h3>Detalhes do veículo</h3>
+    <p>{{wizard.steps.step1|add:1 }}</p>
+    {% csrf_token %}
+    {{ wizard.management_form }}
+    {{form.as_div}}
+    <br>
+    <button type="submit" class="btn btn-danger">Próximo</button>
+</form>
+{% endblock %}
