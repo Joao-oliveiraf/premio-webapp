@@ -14,8 +14,14 @@ Financiamento
     {% endif %}
 
     {{ wizard.management_form }}
-    {{form.as_div}}
-
+    {% for field in form %}
+    <div class="row">
+        <div class="col">
+            <label for="field.id">{{field.label}}</label>
+            {{field}}
+        </div>
+    </div>
+    {% endfor %}
     <br>
     <button type="submit" class="btn btn-danger">Próximo</button>
 </form>
