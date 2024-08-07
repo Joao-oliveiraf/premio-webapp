@@ -1,6 +1,6 @@
 from django import forms
 from django.utils import timezone
-from localflavor.br.forms import BRCPFField, BRCNPJField
+from localflavor.br.forms import BRCPFField, BRCNPJField, BRStateSelect,BRStateChoiceField
 
 class StepOneFinanciamento(forms.Form):
     choices_pessoa_fisica_juridica = [
@@ -119,20 +119,10 @@ class StepOneFinanciamento(forms.Form):
             }
         )
     )
-class StepTwoFinanciamento(forms.Form):
-    CHOICES = [
-        ('cpf', 'CPF'),
-        ('cnpj', 'CNPJ'),
-    ]
-
-    tipo = forms.ChoiceField(
-        choices=CHOICES,
-        widget=forms.RadioSelect,
-        label='Escolha o tipo de documento'
-    )
+class StepTwoFinanciamento_cpf(forms.Form):
     cpf = BRCPFField(
         max_length=16,
-        label='CPF/CNPJ',
+        label='CPF',
         required=False,
         widget=forms.TextInput(
             attrs={
@@ -141,13 +131,43 @@ class StepTwoFinanciamento(forms.Form):
             }
         )
     )
-    cnpj = BRCNPJField(
-        label='CNPJ',
+    nome_completo = forms.CharField(
+        max_length=250,
+        required=True,
+        strip=True,
+        widget=forms.TextInput(
+            attrs={
+                'class':'form-control',
+                'placeholder':'João da Silva',
+                'type':'text'
+            }
+        )
+    )
+    email = forms.EmailField(
+        max_length=100,
         required=False,
         widget=forms.TextInput(
             attrs={
-                'placeholder': '00.000.000/0000-00',
-                'class': 'form-control'
+                'class':'form-control',
+                'placeholder':'exemplo@gmail.com',
+                'type':'email'
+            }
+        )
+    )
+    data_nascimento = forms.DateTimeField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class':'form-control',
+                'type':'date'
+            }
+        )
+    )
+    uf = BRStateChoiceField(
+        label='UF',
+        widget=forms.Select(
+            attrs={
+                'class':'form-control'
             }
         )
     )
@@ -160,7 +180,66 @@ class StepTwoFinanciamento(forms.Form):
 
         if tipo == 'cpf' and not cpf:
             self.add_error('cpf','Insira um valido')
-        elif tipo == 'cnpj' and not cnpj:
+        return cleaned_data
+class StepTwoFinanciamento_cnpj(forms.Form):
+    cnpj = BRCNPJField(
+        max_length=16,
+        label='CNPJ',
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'placeholder':'XX.XXX.XXX/0001-XX',
+                'class':'form-control'
+            }
+        )
+    )
+    razao_social = forms.CharField(
+        max_length=250,
+        required=True,
+        strip=True,
+        widget=forms.TextInput(
+            attrs={
+                'class':'form-control',
+                'placeholder':'João da Silva',
+                'type':'text'
+            }
+        )
+    )
+    email = forms.EmailField(
+        max_length=100,
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'class':'form-control',
+                'placeholder':'exemplo@gmail.com',
+                'type':'email'
+            }
+        )
+    )
+    data_nascimento = forms.DateTimeField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class':'form-control',
+                'type':'date'
+            }
+        )
+    )
+    uf = BRStateChoiceField(
+        label='UF',
+        widget=forms.Select(
+            attrs={
+                'class':'form-control'
+            }
+        )
+    )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        tipo = cleaned_data.get('tipo_pessoa')
+        cnpj = cleaned_data.get('cnpj')
+
+        if tipo == 'cnpj' and not cnpj:
             self.add_error('cnpj','Insira um valido')
         return cleaned_data
 
