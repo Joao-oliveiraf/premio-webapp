@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 
 def login(request):
-    # if request.user.is_authenticated:
-    #     messages.error(request, 'Você já está logado!')
-    #     return redirect('index')
+    if request.user.is_authenticated:
+        messages.error(request, 'Você já está logado!')
+        return redirect('index')
     form = LoginForm
 
     if request.method == 'POST':

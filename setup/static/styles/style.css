@@ -296,6 +296,9 @@ img{
     justify-content: center;
     font-weight: light;
 }
+.preview{
+    max-width: 350px;
+}
 
 @keyframes fade {
   from {opacity: .4}

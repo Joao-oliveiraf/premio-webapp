@@ -7,6 +7,9 @@
 <!-- LOGICA DE SLIDE SHOW -->
 {% if tem_imagens %}
 <div class="slideshow-container">
+    <div class="mySlides" >
+        <img src="{{fotografia.foto.url}}" alt="Foto">
+    </div>
     {% for index, pics in imagens %}
     <div class="mySlides" >
         <img src="{{pics.imagem.url}}" alt="Foto">

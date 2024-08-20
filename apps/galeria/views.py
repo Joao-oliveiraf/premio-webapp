@@ -82,3 +82,16 @@ def deletar_veiculo(request, foto_id):
         return redirect('index')
 def contato(request):
     return render(request, 'galeria/contato.html')
+def deletar_imagem(request, veiculo_id):
+    imagens_disponiveis = ImagemVeiculo.objects.filter(veiculo_id=veiculo_id)
+    if request.method == 'POST':
+        ids_to_delete = request.POST.getlist('fotos')
+        if not ids_to_delete:
+            messages.info(request, 'Nenhuma imagem deletada!')
+            return redirect('index')
+        for foto_id in ids_to_delete:
+            item_to_delete = ImagemVeiculo.objects.filter(id=foto_id)
+            item_to_delete.delete()
+            messages.success(request, f"{len(ids_to_delete)} foto(s) deletada(s) com sucesso")
+        return redirect('index')
+    return render(request, 'galeria/del_imagem.html', {'fotografia': imagens_disponiveis})

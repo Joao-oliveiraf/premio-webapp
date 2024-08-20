@@ -1,0 +1,10 @@
+{% load static %}
+<form method="post">
+    {% csrf_token %}
+    {% for foto in fotografia %}
+    <img src="{{foto.imagem.url}}" style="max-width: 350px;">
+    <input type="checkbox" name="fotos" id="{{foto.id}}" value="{{foto.id}}">
+    {% endfor %}
+    <br>
+    <button type="submit">Deletar</button>
+</form>
