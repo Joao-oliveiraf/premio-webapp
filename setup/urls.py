@@ -23,7 +23,7 @@ from setup.settings import MEDIA_ROOT
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('gerenciamento/', admin.site.urls),
     path('', include('apps.galeria.urls')),
     path('', include('apps.usuarios.urls')),
     path('', include('apps.financiamento.urls')),
