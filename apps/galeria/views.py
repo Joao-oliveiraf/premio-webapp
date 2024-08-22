@@ -90,7 +90,7 @@ def deletar_imagem(request, veiculo_id):
             messages.info(request, 'Nenhuma imagem deletada!')
             return redirect('index')
         for foto_id in ids_to_delete:
-            item_to_delete = ImagemVeiculo.objects.filter(id=foto_id)
+            item_to_delete = get_object_or_404(ImagemVeiculo, id=foto_id)
             item_to_delete.delete()
             messages.success(request, f"{len(ids_to_delete)} foto(s) deletada(s) com sucesso")
         return redirect('index')

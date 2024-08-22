@@ -1,5 +1,9 @@
 from django.db import models
 from django.utils import timezone
+import os
+
+def caminho_imagens(instance, filename):
+    return os.path.join('veiculos/attachments/', instance.veiculo.nome, filename)
 
 class Veiculo(models.Model):
 
@@ -23,4 +27,8 @@ class Veiculo(models.Model):
 
 class ImagemVeiculo(models.Model):
     veiculo = models.ForeignKey(Veiculo, on_delete=models.CASCADE, related_name='imagens')
-    imagem = models.ImageField(upload_to='attachments/%Y/%m', blank=True, max_length=255)
+    imagem = models.ImageField(upload_to=caminho_imagens, blank=True, max_length=255)
+
+    def delete(self, *args, **kwargs):
+        self.imagem.delete(save=False)
+        super().delete(*args, **kwargs)

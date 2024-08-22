@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'apps.usuarios.apps.UsuariosConfig',
     'apps.financiamento.apps.FinanciamentoConfig',
     'formtools',
-    'axes',
+    #'axes',
 
 ]
 
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'axes.middleware.AxesMiddleware'
+    #'axes.middleware.AxesMiddleware'
 ]
 
 ROOT_URLCONF = 'setup.urls'
@@ -148,9 +148,9 @@ MESSAGE_TAGS = {
 }
 
 # AXES
-AXES_FAILURE_LIMIT = 5  # Número máximo de tentativas de login permitidas antes do bloqueio
-AXES_COOLOFF_TIME = 1  # Tempo de bloqueio em horas (por exemplo, 1 hora)
-AXES_LOCKOUT_CALLABLE = 'axes.handlers.default.lockout'
+# AXES_FAILURE_LIMIT = 5  # Número máximo de tentativas de login permitidas antes do bloqueio
+# AXES_COOLOFF_TIME = 1  # Tempo de bloqueio em horas (por exemplo, 1 hora)
+# AXES_LOCKOUT_CALLABLE = 'axes.handlers.default.lockout'
 # AXES_LOCKOUT_TEMPLATE = 'lockout.html'  # Página personalizada para exibir quando o usuário é bloqueado
 
 #CLOUDINARY
