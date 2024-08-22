@@ -76,7 +76,10 @@ def buscar(request):
 @login_required(login_url='/login')
 def deletar_veiculo(request, foto_id):
     if request.user.is_authenticated:
-        veiculo = Veiculo.objects.filter(id=foto_id)
+        imagens_disponiveis = ImagemVeiculo.objects.filter(veiculo_id=foto_id)
+        for object in imagens_disponiveis:
+            object.delete()
+        veiculo = get_object_or_404(Veiculo, id=foto_id)
         veiculo.delete() #Delete confirmation with javascript
         messages.info(request, 'Veiculo excluido com sucesso')
         return redirect('index')

@@ -23,6 +23,10 @@ class Veiculo(models.Model):
 
     def show_preco(self) -> str:
         return f'{self.preco:,.2f}'.replace(',', '.')
+    
+    def delete(self, *args, **kwargs):
+        self.foto.delete(save=False)
+        super().delete(*args, **kwargs)
 
 
 class ImagemVeiculo(models.Model):
