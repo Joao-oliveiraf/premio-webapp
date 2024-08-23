@@ -98,3 +98,16 @@ def deletar_imagem(request, veiculo_id):
             messages.success(request, f"{len(ids_to_delete)} foto(s) deletada(s) com sucesso")
         return redirect('index')
     return render(request, 'galeria/del_imagem.html', {'fotografia': imagens_disponiveis})
+def editar_veiculo(request, veiculo_id):
+    veiculo = Veiculo.objects.get(id=veiculo_id)
+    form = VeiculoForm(instance=veiculo)
+
+    if request.method == 'POST':
+
+        form = VeiculoForm(request.POST, request.FILES, instance=veiculo)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Veiculo editado com sucesso!')
+            return redirect('index')
+    return render(request, 'galeria/editar_veiculo.html', {'form':form, 'veiculo_id':veiculo_id})

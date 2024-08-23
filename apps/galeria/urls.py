@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.galeria.views import index, novo_veiculo,imagem,add_imagem,buscar,deletar_veiculo, contato, deletar_imagem
+from apps.galeria.views import index, novo_veiculo,imagem,add_imagem,buscar,deletar_veiculo, contato, deletar_imagem, editar_veiculo
 
 
 urlpatterns = [
@@ -11,4 +11,5 @@ urlpatterns = [
     path('deletar_veiculo/<int:foto_id>', deletar_veiculo, name='deletar_veiculo'),
     path('contato', contato, name='contato'),
     path('del-imagem/<int:veiculo_id>', deletar_imagem, name='deletar_imagem'),
+    path('editar/<int:veiculo_id>', editar_veiculo, name='editar_veiculo')
 ]
