@@ -265,13 +265,9 @@ img{
 }
 #add, #remove{
     margin-bottom: 250px;
-    display: flex;
     margin: auto;
     padding: 10px;
-    flex-wrap: nowrap;
     align-content: center;
-    justify-content: center;
-    align-items: center;
     width: 150px;
 }
 #add  a {
@@ -295,6 +291,9 @@ img{
     align-items: center;
     justify-content: center;
     font-weight: light;
+}
+.info_flex {
+    text-align: center;
 }
 .preview{
     max-width: 350px;

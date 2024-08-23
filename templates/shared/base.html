@@ -42,3 +42,13 @@
     {% endblock %}
 </body>
 </html>
+<script>
+    setTimeout(function () {
+        let message = document.getElementById('message')
+        if (message) {
+            message.style.transition = 'opacity 0.7s ease-out'
+            message.style.opacity = '0'
+            setTimeout(function() {message.remove();}, 1000);
+        }
+    }, 1500);
+</script>

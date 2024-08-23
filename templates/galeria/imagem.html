@@ -67,23 +67,28 @@
 {% if request.user.is_authenticated %}
 
 <section class="info_flex">
-    <div class="btn btn-outline-success my-2 my-sm-0" id="add">
+    <button class="btn btn-outline-success my-2 my-sm-0" id="add">
         <a href="{%url 'add_imagem' fotografia.id %}">
             Adicionar Fotos
         </a>
-    </div>
+    </button>
+    <button class="btn btn-outline-danger my-2 my-sm-0" id="add">
+        <a href="{%url 'deletar_imagem' fotografia.id %}">
+            Remover Fotos
+        </a>
+    </button>
     <br>
-    <div class="btn btn-outline-success my-2 my-sm-0" id="add">
+    <br>
+    <button class="btn btn-outline-success my-2 my-sm-0" id="add">
         <a href="{%url 'editar_veiculo' fotografia.id %}">
             Editar Veículo
         </a>
-    </div>
-    <br>
-    <div class="btn btn-outline-danger my-2 my-sm-0" id="remove">
+    </button>
+    <button class="btn btn-outline-danger my-2 my-sm-0" id="remove">
         <a href="{%url 'deletar_veiculo' fotografia.id %}" onclick="return confirm('Isso irá excluir todos os dados do veículo! Deseja prosseguir ?')">
             Deletar Veículo
         </a>
-    </div>
+    </button>
 </section>
 <br>
 
