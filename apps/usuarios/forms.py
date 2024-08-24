@@ -9,24 +9,36 @@ class CadastroForm(forms.Form):
         max_length=100,
         strip=True,
         required=True,
-        widget=forms.TextInput()
+        widget=forms.TextInput(attrs={
+            'class':'form-control',
+            'placeholder': 'Nome de usuário'
+        })
     )
     email = forms.EmailField(
         label='E-mail',
         required=True,
         max_length=100,
-        widget=forms.EmailInput()
+        widget=forms.EmailInput(attrs={
+            'class':'form-control',
+            'placeholder': 'email@.com'
+        })
     )
     senha_1 = forms.CharField(
         label='Insira sua senha',
         required=True,
-        widget=forms.PasswordInput(),
+        widget=forms.PasswordInput(attrs={
+            'class':'form-control',
+            'placeholder': 'Senha',
+        }),
         max_length=70,
     )
     senha_2 = forms.CharField(
         label='Insira sua senha',
         required=True,
-        widget=forms.PasswordInput(),
+        widget=forms.PasswordInput(attrs={
+            'class':'form-control',
+            'placeholder': 'Confirme a senha'
+        }),
         max_length=70,
     )
     def clean_nome_de_cadastro(self):

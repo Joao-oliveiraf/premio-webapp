@@ -1,19 +1,33 @@
-<form action="{% url 'cadastro' %}" method="post">
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+<form action="{% url 'cadastro' %}" method="post" style='display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;'>
     {% csrf_token %}
-    <div>
+    <div class='container' style=' display: flex;
+    flex-direction: column;
+    /* align-content: center; */
+    justify-content: center;
+    align-items: center;'>
         {% for field in form %}
-        <div>
+        <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
             <label for="{{field.id_for_label}}">
                 {{field.label}}
             </label>
             {{field}}
         </div>
-    </div>
+    
     {% for error in field.errors %}
-    <div>
+    <div class='alert alert-danger'>
         {{error}}
     </div>
     {% endfor %}
     {% endfor %}
-    <button type="submit">Cadastrar</button>
+    <button type="submit" class="btn btn-danger col-3">Cadastrar</button>
+    </div>
 </form>
+{% endblock %}
